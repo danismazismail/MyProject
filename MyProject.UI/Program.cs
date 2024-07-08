@@ -9,12 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
-{
-    builder.AllowAnyOrigin()
-    .AllowAnyMethod()
-    .AllowAnyHeader();
-}));
 
 builder.Services.AddSwaggerGen();
 
@@ -46,7 +40,6 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseSwagger();
 app.UseSwaggerUI();
-app.UseCors("MyPolicy");
 
 app.UseAuthorization();
 
