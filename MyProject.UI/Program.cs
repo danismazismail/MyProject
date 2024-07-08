@@ -16,6 +16,8 @@ builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
     .AllowAnyHeader();
 }));
 
+builder.Services.AddSwaggerGen();
+
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
 {
     builder.RegisterModule(new AutofacBusinessModule());
@@ -35,20 +37,21 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    app.UseHsts();    
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseCors("MyPolicy");
 
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Person}/{action=Person}/{id?}");
 
 app.Run();

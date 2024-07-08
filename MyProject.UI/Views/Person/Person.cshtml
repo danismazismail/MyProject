@@ -1,0 +1,41 @@
+﻿@model List<GetPersonDto>
+@{
+    ViewData["Title"] = "GetAllPerson";
+}
+
+
+
+<!-- HTML içeriği -->
+<h2>Person List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>PhoneNumber</th>
+            <th>Address</th>
+            <th>DateOfBirth</th>
+            <th>Gender</th>
+            <!-- Diğer sütun başlıkları -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model)
+        {
+            <tr>
+                <td>@person.FirstName</td>
+                <td>@person.LastName</td>
+                <td>@person.Age</td>
+                <td>@person.Email</td>
+                <td>@person.PhoneNumber</td>
+                <td>@person.Address</td>
+                <td>@person.DateOfBirth</td>
+                <td>@person.Gender</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
